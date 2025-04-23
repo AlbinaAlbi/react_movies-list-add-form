@@ -20,7 +20,11 @@ export const NewMovie: React.FC<NewMovieProps> = ({ onAdd }) => {
   });
 
   const getIsMovieComplete = (): boolean => {
-    return Object.values(movie).every(value => value !== '');
+    const newMovie = { ...movie };
+
+    delete newMovie.description;
+
+    return Object.values(newMovie).every(value => value !== '');
   };
 
   const handlerSubmit = (event: React.FormEvent) => {
