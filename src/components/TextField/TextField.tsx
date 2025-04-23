@@ -22,10 +22,10 @@ export const TextField: React.FC<Props> = ({
   required = false,
   onChange = () => {},
 }) => {
-  // generate a unique id once on component load
+  // генерируйте уникальный идентификатор один раз при загрузке компонента
   const [id] = useState(() => `${name}-${getRandomDigits()}`);
 
-  // To show errors only if the field was touched (onBlur)
+  // Показывать ошибки только в том случае, если поле было затронуто (onBlur)
   const [touched, setTouched] = useState(false);
   const hasError = touched && required && !value;
 
