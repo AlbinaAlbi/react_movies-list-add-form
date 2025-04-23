@@ -19,11 +19,17 @@ export const NewMovie: React.FC<NewMovieProps> = ({ onAdd }) => {
     imdbId: '',
   });
 
-  const handlerSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
+  const getIsMovieComplete = (): boolean => {
+    return Object.values(movie).every(value => value !== '');
   };
 
-  const handlerOnAdd = () => {
+  const handlerSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+
+    if (!getIsMovieComplete()) {
+      return;
+    }
+
     onAdd(movie);
     setCount(count + 1);
   };
@@ -78,7 +84,7 @@ export const NewMovie: React.FC<NewMovieProps> = ({ onAdd }) => {
             type="submit"
             data-cy="submit-button"
             className="button is-link"
-            onClick={handlerOnAdd}
+            disabled={!getIsMovieComplete()}
           >
             Add
           </button>
