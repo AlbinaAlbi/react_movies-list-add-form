@@ -36,6 +36,13 @@ export const NewMovie: React.FC<NewMovieProps> = ({ onAdd }) => {
 
     onAdd(movie);
     setCount(count + 1);
+    setMovie({
+      title: '',
+      description: '',
+      imgUrl: '',
+      imdbUrl: '',
+      imdbId: '',
+    });
   };
 
   return (
